@@ -2,14 +2,14 @@
 const products = [
     { id: 1, name: "Premium Lipstick", price: 120, category: "cosmetics", image: "https://via.placeholder.com/200x175?text=Premium+Lipstick" },
     { id: 2, name: "Black Kajal", price: 60, category: "cosmetics", image: "https://via.placeholder.com/200x175?text=Black+Kajal" },
-    { id: 3, name: "Vicco Turmeric Skin Cream 15g", price: 78, category: "beauty", image: "https://img.sanishtech.com/u/239dd12fb6a268a984116d2a71d163df.png " },
-    { id: 4, name: "Vicco Turmeric Skin Cream 30g", price: 150, category: "beauty", image: "https://img.sanishtech.com/u/239dd12fb6a268a984116d2a71d163df.png" },
-    { id: 5, name: "White Tone Cream 15g", price: 48, category: "beauty", image: "https://img.sanishtech.com/u/8c6ee74e717cac0a4355e226f7c5b303.jpg" },
-    { id: 6, name: "Skin Shine Cream 15g", price: 50, category: "beauty", image: "https://img.sanishtech.com/u/100471c30284255cf9d54e2e5261b093.jpg" },
-    { id: 7, name: "Betanovate-C 30g", price: 80, category: "beauty", image: "https://img.sanishtech.com/u/b0fe6075e90c81e6cd9c9aaa1442977b.webp" },
-    { id: 8, name: "Melamine 15g", price: 87, category: "beauty", image: "https://img.sanishtech.com/u/68eba872d1860398bb2e01dbe862705f.jpg" },
-    { id: 9, name: "Roop Mantra 30g", price: 125, category: "beauty", image: "https://img.sanishtech.com/u/4b10da1a21a532e2a8c1068c59538c1c.jpg" },
-    { id: 10, name: "Dove Shampoo", price: 95, category: "beauty", image: "https://img.sanishtech.com/u/6c66048ed044d141aa36cca6a1455b01.jpg" }
+    { id: 3, name: "Vicco Turmeric Skin Cream 15g", price: 78, category: "beauty", image: "<a href="https://ibb.co/xSTyHdK4"><img src="https://i.ibb.co/wNmTsjZv/skin-banner-47b6810b-f3e9-4447-98a8-0100da42eb19.png" alt="skin-banner-47b6810b-f3e9-4447-98a8-0100da42eb19" border="0"></a> " },
+    { id: 4, name: "Vicco Turmeric Skin Cream 30g", price: 150, category: "beauty", image: "<a href="https://ibb.co/vFbVBvZ"><img src="https://i.ibb.co/WhQG3pg/file-00000000032882119d95a69ee471c64f.png" alt="file-00000000032882119d95a69ee471c64f" border="0"></a>" },
+    { id: 5, name: "White Tone Cream 15g", price: 48, category: "beauty", image: "<a href="https://ibb.co/CyPhg6t"><img src="https://i.ibb.co/4L1Pz2f/White-tone.jpg" alt="White-tone" border="0"></a>" },
+    { id: 6, name: "Skin Shine Cream 15g", price: 50, category: "beauty", image: "<a href="https://ibb.co/qYbJkkyH"><img src="https://i.ibb.co/N2wTZZV0/62a218ae343b8.jpg" alt="62a218ae343b8" border="0"></a>" },
+    { id: 7, name: "Betanovate-C 30g", price: 80, category: "beauty", image: "<a href="https://ibb.co/Vct00Gdq"><img src="https://i.ibb.co/zTrWWg14/betnovate-c-cream-mainimage-z32tqaeiv0c2cqqmt85plndh.webp" alt="betnovate-c-cream-mainimage-z32tqaeiv0c2cqqmt85plndh" border="0"></a>" },
+    { id: 8, name: "Melamine 15g", price: 87, category: "beauty", image: "<a href="https://ibb.co/hJQ630n9"><img src="https://i.ibb.co/v6yF09rq/MEL0195-1.jpg" alt="MEL0195-1" border="0"></a>" },
+    { id: 9, name: "Roop Mantra 30g", price: 125, category: "beauty", image: "<a href="https://ibb.co/0ykC0qhG"><img src="https://i.ibb.co/LdMxTSnZ/roop-mantra-ayurvedic-face-cream-new-pack-2.jpg" alt="roop-mantra-ayurvedic-face-cream-new-pack-2" border="0"></a>" },
+    { id: 10, name: "Dove Shampoo", price: 95, category: "beauty", image: "<a href="https://ibb.co/Mbsq0c1"><img src="https://i.ibb.co/GX0gSWM/tice-U1-R5-32e1d8a54d244a309adb52d61470a82e.jpg" alt="tice-U1-R5-32e1d8a54d244a309adb52d61470a82e" border="0"></a>" }
 ];
 
 // Delivery Charges per KM
