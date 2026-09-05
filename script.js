@@ -2,14 +2,14 @@
 const products = [
     { id: 1, name: "Premium Lipstick", price: 120, category: "cosmetics", image: "https://via.placeholder.com/200x175?text=Premium+Lipstick" },
     { id: 2, name: "Black Kajal", price: 60, category: "cosmetics", image: "https://via.placeholder.com/200x175?text=Black+Kajal" },
-    { id: 3, name: "Vicco Turmeric Skin Cream 15g", price: 78, category: "beauty", image: "https://res.cloudinary.com/z59shoo6/image/upload/f_auto,q_auto/file_00000000032882119d95a69ee471c64f" },
-    { id: 4, name: "Vicco Turmeric Skin Cream 30g", price: 150, category: "beauty", image: "https://res.cloudinary.com/z59shoo6/image/upload/f_auto,q_auto/file_00000000032882119d95a69ee471c64f" },
-    { id: 5, name: "White Tone Cream 15g", price: 48, category: "beauty", image: "https://kommodo.ai/i/zTsR999v8oejqbQaaQ5i" },
-    { id: 6, name: "Skin Shine Cream 15g", price: 50, category: "beauty", image: "https://kommodo.ai/i/C93jsplDlIgI0uJjMTT6" },
-    { id: 7, name: "Betanovate-C 30g", price: 80, category: "beauty", image: "https://kommodo.ai/i/tKWVSxntRTmNg1gissDz" },
-    { id: 8, name: "Melamine 15g", price: 87, category: "beauty", image: "https://kommodo.ai/i/QxcUCBG6DiTcZlghqCxj" },
-    { id: 9, name: "Roop Mantra 30g", price: 125, category: "beauty", image: "https://kommodo.ai/i/NRy5bLu5JezvQrZk" },
-    { id: 10, name: "Dove Shampoo", price: 95, category: "beauty", image: "https://kommodo.ai/i/4xKFzNaDzgBeLdaFRMgb" }
+    { id: 3, name: "Vicco Turmeric Skin Cream 15g", price: 78, category: "beauty", image: "https://img.sanishtech.com/u/239dd12fb6a268a984116d2a71d163df.png " },
+    { id: 4, name: "Vicco Turmeric Skin Cream 30g", price: 150, category: "beauty", image: "https://img.sanishtech.com/u/239dd12fb6a268a984116d2a71d163df.png" },
+    { id: 5, name: "White Tone Cream 15g", price: 48, category: "beauty", image: "https://img.sanishtech.com/u/8c6ee74e717cac0a4355e226f7c5b303.jpg" },
+    { id: 6, name: "Skin Shine Cream 15g", price: 50, category: "beauty", image: "https://img.sanishtech.com/u/100471c30284255cf9d54e2e5261b093.jpg" },
+    { id: 7, name: "Betanovate-C 30g", price: 80, category: "beauty", image: "https://img.sanishtech.com/u/b0fe6075e90c81e6cd9c9aaa1442977b.webp" },
+    { id: 8, name: "Melamine 15g", price: 87, category: "beauty", image: "https://img.sanishtech.com/u/68eba872d1860398bb2e01dbe862705f.jpg" },
+    { id: 9, name: "Roop Mantra 30g", price: 125, category: "beauty", image: "https://img.sanishtech.com/u/4b10da1a21a532e2a8c1068c59538c1c.jpg" },
+    { id: 10, name: "Dove Shampoo", price: 95, category: "beauty", image: "https://img.sanishtech.com/u/6c66048ed044d141aa36cca6a1455b01.jpg" }
 ];
 
 // Delivery Charges per KM
