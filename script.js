@@ -145,7 +145,7 @@ function displayCart() {
                     <button onclick="updateQuantity(${index}, -1)">−</button>
                     <span>${item.quantity}</span>
                     <button onclick="updateQuantity(${index}, 1)">+</button>
-                    <button class="remove" onclick="removeFromCart(${index})">हटाएं</button>
+                    <button class="remove" onclick="removeFromCart(${index})">हटाए���</button>
                 </div>
                 <div style="text-align:right; font-weight:bold;">कुल: ₹${itemTotal}</div>
             </div>
@@ -236,20 +236,20 @@ function createCheckoutModal() {
             <h2>💳 चेकआउट</h2>
             <div id="checkoutSummary"></div>
             
-            <form id="checkoutForm">
+            <form id="checkoutForm" onsubmit="submitOrder(event)">
                 <div class="form-group">
                     <label>आपका नाम</label>
-                    <input type="text" required placeholder="पूरा नाम दर्ज करें">
+                    <input type="text" id="customerName" required placeholder="पूरा नाम दर्ज करें">
                 </div>
                 
                 <div class="form-group">
                     <label>फोन नंबर</label>
-                    <input type="tel" required placeholder="10 अंकों का फोन नंबर">
+                    <input type="tel" id="customerPhone" required placeholder="10 अंकों का फोन नंबर">
                 </div>
                 
                 <div class="form-group">
                     <label>पता</label>
-                    <textarea required placeholder="अपना पूरा पता दर्ज करें"></textarea>
+                    <textarea id="customerAddress" required placeholder="अपना पूरा पता दर्ज करें"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -266,7 +266,7 @@ function createCheckoutModal() {
                     <p style="font-weight:bold; font-size:16px;">अंतिम कुल: ₹<span id="grandTotal">0</span></p>
                 </div>
                 
-                <button type="submit" class="submit-btn" onclick="submitOrder(event)">WhatsApp पर ऑर्डर भेजें</button>
+                <button type="submit" class="submit-btn">WhatsApp पर ऑर्डर भेजें</button>
             </form>
         </div>
     `;
@@ -333,48 +333,58 @@ function generateWhatsAppMessage(name, phone, address, distance) {
 function submitOrder(event) {
     event.preventDefault();
     
-    const form = event.target;
-    const inputs = form.querySelectorAll("input");
-    const name = inputs[0].value.trim();
-    const phone = inputs[1].value.trim();
-    const distance = parseFloat(inputs[2].value) || 0;
-    const address = form.querySelector("textarea").value.trim();
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const address = document.getElementById("customerAddress").value.trim();
+    const distance = parseFloat(document.getElementById("distance").value) || 0;
     
-    if (name && phone && address && distance >= 0 && phone.length === 10) {
-        const calculation = calculateTotalWithDelivery(distance);
-        
-        // Generate WhatsApp message
-        const message = generateWhatsAppMessage(name, phone, address, distance);
-        
-        // WhatsApp URL
-        const whatsappURL = `https://wa.me/${OWNER_WHATSAPP}?text=${message}`;
-        
-        // Show confirmation and redirect to WhatsApp
-        alert(`✅ आपका ऑर्डर WhatsApp पर भेजा जा रहा है।\n\nनाम: ${name}\nफोन: ${phone}\nदूरी: ${distance} Km\n\nअंतिम कुल: ₹${calculation.total}`);
-        
-        // Open WhatsApp
-        window.open(whatsappURL, "_blank");
-        
-        // Clear cart
-        cart = [];
-        updateCartCount();
-        
-        // Close modals
-        closeModal("checkoutModal");
-        closeModal("cartModal");
-        
-        // Reset form
-        form.reset();
-        
-    } else {
-        if (phone.length !== 10) {
-            alert("कृपया सही 10 अंकों का फोन नंबर दर्ज करें");
-        } else if (distance < 0) {
-            alert("कृपया सही दूरी दर्ज करें");
-        } else {
-            alert("कृपया सभी जानकारी सही तरीके से भरें");
-        }
+    // Validation
+    if (!name) {
+        alert("कृपया अपना नाम दर्ज करें");
+        return;
     }
+    
+    if (!phone || phone.length !== 10) {
+        alert("कृपया सही 10 अंकों का फोन नंबर दर्ज करें");
+        return;
+    }
+    
+    if (!address) {
+        alert("कृपया अपना पता दर्ज करें");
+        return;
+    }
+    
+    if (distance < 0) {
+        alert("कृपया सही दूरी दर्ज करें");
+        return;
+    }
+    
+    if (cart.length === 0) {
+        alert("कार्ट खाली है");
+        return;
+    }
+    
+    const calculation = calculateTotalWithDelivery(distance);
+    
+    // Generate WhatsApp message
+    const message = generateWhatsAppMessage(name, phone, address, distance);
+    
+    // WhatsApp URL
+    const whatsappURL = `https://wa.me/${OWNER_WHATSAPP}?text=${message}`;
+    
+    // Show confirmation
+    alert(`✅ आपका ऑर्डर WhatsApp पर भेजा जा रहा है।\n\nनाम: ${name}\nफोन: ${phone}\nदूरी: ${distance} Km\nअंतिम कुल: ₹${calculation.total}`);
+    
+    // Open WhatsApp
+    window.open(whatsappURL, "_blank");
+    
+    // Clear cart
+    cart = [];
+    updateCartCount();
+    
+    // Close modals
+    closeModal("checkoutModal");
+    closeModal("cartModal");
 }
 
 // Show Notification
