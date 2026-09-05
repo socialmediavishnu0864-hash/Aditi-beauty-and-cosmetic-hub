@@ -2,1370 +2,2073 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>अदिति ब्यूटी एंड कॉस्मेटिक हब</title>
 
 <style>
-:root{
-  --maroon:#600020;
-  --red:#B01040;
-  --light:#FFF8F8;
-  --white:#fff;
-  --black:#111;
-  --border:#ead1da;
-}
 
-*{box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,"Noto Sans Devanagari",sans-serif;
+}
 
 body{
-  margin:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:var(--light);
-  color:var(--black);
+    background:#fff;
+    color:#222;
 }
+
+/* HEADER */
 
 header{
-  background:linear-gradient(135deg,var(--maroon),var(--red));
-  color:white;
-  padding:13px 8px;
-  text-align:center;
-  position:sticky;
-  top:0;
-  z-index:20;
-  box-shadow:0 3px 12px #0003;
+    background:#fff;
+    text-align:center;
+    padding:22px 12px 18px;
+    border-bottom:5px solid #8d0038;
 }
 
-.shop-name{
-  font-size:22px;
-  font-weight:bold;
-  white-space:nowrap;
+.logo-title{
+    font-size:30px;
+    font-weight:900;
+    color:#000;
+    line-height:1.3;
 }
 
 .services{
-  margin-top:5px;
-  font-size:13px;
+    margin-top:9px;
+    font-size:15px;
+    font-weight:bold;
+    color:#8d0038;
 }
 
-.top-buttons{
-  margin-top:9px;
-  display:flex;
-  justify-content:center;
-  gap:7px;
-  flex-wrap:wrap;
+/* DELIVERY */
+
+.delivery{
+    background:#fff2a8;
+    color:#4b3900;
+    text-align:center;
+    padding:10px 8px;
+    font-size:13px;
+    font-weight:bold;
 }
 
-.top-buttons button,
-.category button,
-.action-btn,
-.buy-btn{
-  border:0;
-  border-radius:20px;
-  padding:9px 13px;
-  cursor:pointer;
-  font-weight:bold;
+/* SEARCH */
+
+.search-area{
+    padding:14px;
+    background:#fafafa;
+    position:sticky;
+    top:0;
+    z-index:20;
 }
 
-.top-buttons button{
-  background:white;
-  color:var(--maroon);
+.search-box input{
+    width:100%;
+    padding:13px 18px;
+    border:2px solid #e2cbd5;
+    border-radius:30px;
+    outline:none;
+    font-size:15px;
 }
 
-.category{
-  padding:12px 8px;
-  display:flex;
-  gap:7px;
-  overflow-x:auto;
-  justify-content:center;
+.search-box input:focus{
+    border-color:#8d0038;
 }
 
-.category button{
-  background:#f3dce4;
-  color:var(--maroon);
-  white-space:nowrap;
+/* CATEGORY BUTTONS */
+
+.categories{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:10px 14px;
+    background:#fff;
+    border-bottom:1px solid #eee;
 }
 
-.category button.active{
-  background:var(--maroon);
-  color:white;
+.categories::-webkit-scrollbar{
+    display:none;
 }
 
-.section-title{
-  text-align:center;
-  color:var(--maroon);
-  margin:8px 0 12px;
+.categories button{
+    white-space:nowrap;
+    border:1px solid #8d0038;
+    background:#fff;
+    color:#8d0038;
+    padding:9px 15px;
+    border-radius:22px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.products{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  padding:0 10px 20px;
+.categories button.active{
+    background:#8d0038;
+    color:#fff;
 }
 
-.card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:13px;
-  overflow:hidden;
-  box-shadow:0 3px 9px #60002018;
-  cursor:pointer;
+/* MAIN */
+
+.container{
+    padding:12px;
+    max-width:1200px;
+    margin:auto;
 }
 
-.card img{
-  width:100%;
-  height:145px;
-  object-fit:contain;
-  background:white;
+.category-section{
+    margin-bottom:25px;
 }
 
-.card-body{
-  padding:8px;
+.category-title{
+    color:#8d0038;
+    font-size:21px;
+    margin:22px 0 12px;
+    padding-left:8px;
+    border-left:5px solid #111;
 }
 
-.card h3{
-  font-size:15px;
-  margin:0 0 4px;
-  color:var(--maroon);
+/* PRODUCT GRID */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
-.details{
-  font-size:12px;
-  color:#666;
-  min-height:17px;
+.product{
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.product-image{
+    width:100%;
+    height:175px;
+    object-fit:contain;
+    background:#fafafa;
+    display:block;
+}
+
+.product-info{
+    padding:10px;
+}
+
+.product-name{
+    font-size:15px;
+    font-weight:bold;
+    line-height:1.3;
+    min-height:38px;
 }
 
 .price{
-  color:var(--red);
-  font-size:17px;
-  font-weight:bold;
-  margin:5px 0;
+    color:#8d0038;
+    font-size:18px;
+    font-weight:900;
+    margin:6px 0 9px;
 }
 
-.card-buttons{
-  display:flex;
-  gap:5px;
+.buttons{
+    display:flex;
+    gap:6px;
 }
 
-.action-btn{
-  flex:1;
-  background:#f3dce4;
-  color:var(--maroon);
-  font-size:12px;
+.buttons button{
+    flex:1;
+    padding:9px 4px;
+    border-radius:7px;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 .buy-btn{
-  flex:1;
-  background:var(--maroon);
-  color:white;
-  font-size:12px;
+    background:#8d0038;
+    color:#fff;
+    border:1px solid #8d0038;
 }
 
-.empty{
-  grid-column:1/-1;
-  text-align:center;
-  padding:35px 10px;
-  color:#777;
+.cart-btn{
+    background:#fff;
+    color:#8d0038;
+    border:1px solid #8d0038;
 }
 
-footer{
-  background:var(--maroon);
-  color:white;
-  text-align:center;
-  padding:20px 10px;
-  line-height:1.8;
+.no-result{
+    display:none;
+    text-align:center;
+    padding:45px 10px;
+    color:#777;
+    font-size:16px;
 }
 
-footer strong{
-  color:#ffd9e4;
+/* CART FLOAT BUTTON */
+
+.cart-button{
+    position:fixed;
+    right:18px;
+    bottom:20px;
+    width:58px;
+    height:58px;
+    border:none;
+    border-radius:50%;
+    background:#8d0038;
+    color:#fff;
+    font-size:23px;
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+    z-index:50;
+    cursor:pointer;
 }
 
-.overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:50;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
+.cart-count{
+    position:absolute;
+    top:-4px;
+    right:-3px;
+    width:22px;
+    height:22px;
+    background:#111;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:bold;
 }
+
+/* MODAL */
 
 .modal{
-  background:white;
-  width:100%;
-  max-width:430px;
-  max-height:90vh;
-  overflow:auto;
-  border-radius:16px;
-  padding:16px;
-  position:relative;
+    display:none;
+    position:fixed;
+    z-index:100;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.65);
+    padding:15px;
+}
+
+.modal-box{
+    background:#fff;
+    max-width:520px;
+    margin:25px auto;
+    padding:20px;
+    border-radius:15px;
+    max-height:92vh;
+    overflow-y:auto;
 }
 
 .close{
-  position:absolute;
-  right:12px;
-  top:8px;
-  border:0;
-  background:#f1d8e1;
-  color:var(--maroon);
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  font-size:20px;
-  cursor:pointer;
-}
-
-.modal img{
-  width:100%;
-  height:210px;
-  object-fit:contain;
+    float:right;
+    font-size:28px;
+    cursor:pointer;
+    color:#555;
 }
 
 .modal h2{
-  color:var(--maroon);
-  margin:7px 0;
+    color:#8d0038;
+    margin-bottom:15px;
 }
 
-.modal-price{
-  color:var(--red);
-  font-size:21px;
-  font-weight:bold;
+.selected-product{
+    background:#faf3f6;
+    border-left:4px solid #8d0038;
+    padding:12px;
+    margin-bottom:15px;
+    line-height:1.6;
 }
 
-.qty{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:15px;
-  margin:12px 0;
+/* FORM */
+
+.form-group{
+    margin-bottom:13px;
 }
 
-.qty button{
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:var(--maroon);
-  color:white;
-  font-size:20px;
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:5px;
 }
 
-.qty span{
-  font-weight:bold;
-  font-size:18px;
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:11px;
+    border:1px solid #ddd;
+    border-radius:7px;
+    outline:none;
+    font-size:14px;
 }
 
-.cart-row{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:9px 0;
-  border-bottom:1px solid #eee;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#8d0038;
 }
 
-.cart-row img{
-  width:55px;
-  height:55px;
-  object-fit:contain;
+/* QUANTITY */
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.cart-info{
-  flex:1;
+.quantity button{
+    width:34px;
+    height:34px;
+    border:none;
+    background:#8d0038;
+    color:#fff;
+    border-radius:6px;
+    font-size:18px;
+    cursor:pointer;
 }
 
-.cart-info b{
-  color:var(--maroon);
+.quantity span{
+    font-weight:bold;
+    min-width:25px;
+    text-align:center;
+}
+
+/* CART */
+
+.cart-item{
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+}
+
+.cart-item-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.cart-item-name{
+    font-weight:bold;
 }
 
 .cart-controls{
-  display:flex;
-  align-items:center;
-  gap:6px;
+    margin-top:8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
 .cart-controls button{
-  border:0;
-  background:#f1d8e1;
-  color:var(--maroon);
-  width:26px;
-  height:26px;
-  border-radius:50%;
-  font-weight:bold;
+    padding:5px 9px;
+    border:1px solid #8d0038;
+    background:#fff;
+    color:#8d0038;
+    border-radius:5px;
+    cursor:pointer;
 }
 
-.total{
-  text-align:right;
-  font-size:19px;
-  font-weight:bold;
-  color:var(--red);
-  margin:14px 0;
+.remove{
+    margin-left:auto;
+    color:#b00020 !important;
+    border-color:#b00020 !important;
 }
 
-input,select,textarea{
-  width:100%;
-  padding:11px;
-  margin:5px 0 10px;
-  border:1px solid #dcbac6;
-  border-radius:9px;
-  font-size:14px;
+.cart-total{
+    font-size:19px;
+    font-weight:bold;
+    color:#8d0038;
+    margin-top:15px;
 }
 
-label{
-  color:var(--maroon);
-  font-weight:bold;
-  font-size:13px;
+.delivery-status{
+    margin-top:8px;
+    font-size:13px;
+    font-weight:bold;
 }
 
-.form-btn{
-  width:100%;
-  border:0;
-  padding:12px;
-  border-radius:10px;
-  background:var(--maroon);
-  color:white;
-  font-weight:bold;
-  font-size:15px;
-  cursor:pointer;
+.checkout-btn,
+.submit-btn{
+    width:100%;
+    border:none;
+    background:#8d0038;
+    color:#fff;
+    padding:13px;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:bold;
+    margin-top:12px;
+    cursor:pointer;
 }
 
-.order-box{
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:10px;
-  margin-bottom:9px;
-  background:#fffafa;
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    padding:28px 15px;
+    margin-top:35px;
 }
 
-.order-box b{
-  color:var(--maroon);
+footer h3{
+    color:#fff;
+    font-size:20px;
+    margin-bottom:10px;
 }
 
-@media(min-width:650px){
-  .products{
-    grid-template-columns:repeat(4,1fr);
-    max-width:1100px;
-    margin:auto;
-  }
+footer p{
+    font-size:13px;
+    line-height:1.8;
 }
+
+.footer-owner{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.footer-help{
+    margin-top:5px;
+    font-weight:bold;
+}
+
+.footer-delivery{
+    margin-top:12px;
+    color:#fff;
+    font-weight:bold;
+}
+
+/* DESKTOP */
+
+@media(min-width:700px){
+
+    .product-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .logo-title{
+        font-size:40px;
+    }
+
+    .container{
+        padding:20px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="shop-name">अदिति ब्यूटी एंड कॉस्मेटिक हब</div>
-  <div class="services">ब्यूटी पार्लर | कॉस्मेटिक्स | सिलाई सेंटर</div>
 
-  <div class="top-buttons">
-    <button onclick="openCart()">🛒 कार्ट (<span id="cartCount">0</span>)</button>
-    <button onclick="openOrders()">📦 मेरे ऑर्डर</button>
-  </div>
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo-title">
+        अदिति ब्यूटी एंड कॉस्मेटिक हब
+    </div>
+
+    <div class="services">
+        ब्यूटी पार्लर &nbsp; | &nbsp; कॉस्मेटिक्स &nbsp; | &nbsp; सिलाई सेंटर
+    </div>
+
 </header>
 
-<nav class="category">
-  <button class="active" onclick="showCategory('all',this)">सभी</button>
-  <button onclick="showCategory('cosmetics',this)">कॉस्मेटिक प्रोडक्ट</button>
-  <button onclick="showCategory('beauty',this)">ब्यूटी प्रोडक्ट</button>
-  <button onclick="showCategory('bangles',this)">चूड़ी / माला</button>
-</nav>
 
-<h2 class="section-title" id="sectionTitle">सभी प्रोडक्ट</h2>
+<!-- DELIVERY -->
 
-<main id="products" class="products"></main>
+<div class="delivery">
+    ₹50 से अधिक की खरीदारी पर 10/Km. HOME DELIVERY
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-area">
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 कोई भी Product Search करें..."
+            oninput="searchProducts()"
+        >
+
+    </div>
+
+</div>
+
+
+<!-- CATEGORY BUTTONS -->
+
+<div class="categories">
+
+    <button
+        class="active"
+        onclick="filterCategory('all', this)">
+        All
+    </button>
+
+    <button
+        onclick="filterCategory('cosmetics', this)">
+        कॉस्मेटिक प्रोडक्ट
+    </button>
+
+    <button
+        onclick="filterCategory('beauty', this)">
+        ब्यूटी प्रोडक्ट
+    </button>
+
+    <button
+        onclick="filterCategory('bangles', this)">
+        चूड़ी / माला
+    </button>
+
+</div>
+
+
+<!-- PRODUCTS -->
+
+<div class="container">
+
+    <div id="products">
+
+
+        <!-- COSMETICS -->
+
+        <div
+            class="category-section"
+            data-section="cosmetics">
+
+            <h2 class="category-title">
+                कॉस्मेटिक प्रोडक्ट
+            </h2>
+
+            <div class="product-grid">
+
+
+                <!-- PRODUCT 1 -->
+
+                <div
+                    class="product"
+                    data-category="cosmetics"
+                    data-name="Premium Lipstick">
+
+                    <img
+                        class="product-image"
+                        src="IMAGE_URL_HERE"
+                        alt="Premium Lipstick"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            Premium Lipstick
+                        </div>
+
+                        <div class="price">
+                            ₹120
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Premium Lipstick',120)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Premium Lipstick',120)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCT 2 -->
+
+                <div
+                    class="product"
+                    data-category="cosmetics"
+                    data-name="Black Kajal">
+
+                    <img
+                        class="product-image"
+                        src="IMAGE_URL_HERE"
+                        alt="Black Kajal"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            Black Kajal
+                        </div>
+
+                        <div class="price">
+                            ₹60
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Black Kajal',60)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Black Kajal',60)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BEAUTY -->
+
+        <div
+            class="category-section"
+            data-section="beauty">
+
+            <h2 class="category-title">
+                ब्यूटी प्रोडक्ट
+            </h2>
+
+            <div class="product-grid">
+
+
+                <!-- FACE CREAM -->
+
+                <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="Vicco turmeric skin cream">
+
+                    <img
+                        class="product-image"
+                        src="https://res.cloudinary.com/z59shoo6/image/upload/f_auto,q_auto/file_00000000032882119d95a69ee471c64f"
+                        alt="Vicco turmeric skin cream"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            Vicco Turmeric Skin Cream 15g.
+                        </div>
+
+                        <div class="price">
+                            ₹78
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Vicco Turmeric Skin Cream',78)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Vicco Turmeric Skin Cream',78)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+      
+
+                <!-- FACE CREAM -->
+
+                <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="Vicco turmeric skin cream">
+
+                    <img
+                        class="product-image"
+                        src="https://res.cloudinary.com/z59shoo6/image/upload/f_auto,q_auto/file_00000000032882119d95a69ee471c64f"
+                        alt="Vicco turmeric skin cream"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            Vicco Turmeric Skin Cream 30g.
+                        </div>
+
+                        <div class="price">
+                            ₹150
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Vicco Turmeric Skin Cream',150)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Vicco Turmeric Skin Cream',150)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+
+
+  <!-- FACE CREAM -->
+
+                <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="‎White Tone Cream ">
+
+                    <img
+                        class="product-image"
+                        src="https://kommodo.ai/i/zTsR999v8oejqbQaaQ5i"
+                        alt="‎White Tone Cream"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                       ‎White Tone Cream 15g.
+                        </div>
+
+                        <div class="price">
+                            ₹48
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('white tone cream',48)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('white tone cream',48)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+  
+
+    <!-- FACE CREAM -->
+
+                <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="‎Skin Shine Cream">
+
+                    <img
+                        class="product-image"
+                        src="https://kommodo.ai/i/C93jsplDlIgI0uJjMTT6"
+                        alt="‎Skin Shine Cream"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                       ‎Skin Shine Cream 15g.
+                        </div>
+
+                        <div class="price">
+                            ₹50
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Skin Shine Cream',50)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Skin Shine Cream',50)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+  
+
+  
+                <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="‎Betanovate-C ">
+
+                    <img
+                        class="product-image"
+                        src="https://kommodo.ai/i/tKWVSxntRTmNg1gissDz"
+                        alt="Betanovate-C "
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                       ‎Betanovate-C  30g.
+                        </div>
+
+                        <div class="price">
+                            ₹80
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Betanovate-C ',80)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Betanovate-C ',80)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+  
+
+
+  <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="Melamine">
+
+                    <img
+                        class="product-image"
+                        src="https://kommodo.ai/i/QxcUCBG6DiTcZlghqCxj" 
+                        alt="Melamine"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                       ‎Melamine 15g.
+                        </div>
+
+                        <div class="price">
+                            ₹87
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Melamine',87)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Melamine',87)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+
+
+    <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="Roop Mantra">
+
+                    <img
+                        class="product-image"
+                        src="https://kommodo.ai/i/NRy5bLu5JezvQrZkkhttps://kommodo.ai/i/NRy5bLu5JezvQrZkkCLjCLj"   
+                        alt="Roop Mantra"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                       ‎Roop Mantra 30g.
+                        </div>
+
+                        <div class="price">
+                            ₹125
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Roop mantra',125)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Roop Mantra',125)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+  
+
+  
+    <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="Dove Shampoo">
+
+                    <img
+                        class="product-image"
+                        src="https://kommodo.ai/i/4xKFzNaDzgBeLdaFRMgb" 
+‎  
+                        alt="Dove Shampoo"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                       ‎Dove Shampoo 75g.
+                        </div>
+
+                        <div class="price">
+                            ₹60
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Dove Shampoo',60)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Dove Shampoo',60)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+
+
+    
+    <div
+                    class="product"
+                    data-category="beauty"
+                    data-name="Sunsilk Shampoo">
+
+                    <img
+                        class="product-image"
+                        src="https://kommodo.ai/i/OuPEt223VmyTQ7namsOp"
+‎  
+                        alt="Sunsilk Shampoo"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                       ‎Sunsilk Shampoo 80ml.
+                        </div>
+
+                        <div class="price">
+                            ₹54
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Sunsilk Shampoo',54)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Sunsilk Shampoo',54)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+</div>
+  
+
+        <!-- BANGLES -->
+
+        <div
+            class="category-section"
+            data-section="bangles">
+
+            <h2 class="category-title">
+                चूड़ी / माला
+            </h2>
+
+            <div class="product-grid">
+
+
+                <!-- BANGLES -->
+
+                <div
+                    class="product"
+                    data-category="bangles"
+                    data-name="Beautiful Bangles">
+
+                    <img
+                        class="product-image"
+                        src="IMAGE_URL_HERE"
+                        alt="Beautiful Bangles"
+                    >
+
+                    <div class="product-info">
+
+                        <div class="product-name">
+                            Beautiful Bangles
+                        </div>
+
+                        <div class="price">
+                            ₹80
+                        </div>
+
+                        <div class="buttons">
+
+                            <button
+                                class="buy-btn"
+                                onclick="buyNow('Beautiful Bangles',80)">
+                                Buy Now
+                            </button>
+
+                            <button
+                                class="cart-btn"
+                                onclick="addToCart('Beautiful Bangles',80)">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        class="no-result"
+        id="noResult">
+        कोई Product नहीं मिला।
+    </div>
+
+</div>
+
+
+<!-- CART BUTTON -->
+
+<button
+    class="cart-button"
+    onclick="openCart()">
+
+    🛒
+
+    <span
+        class="cart-count"
+        id="cartCount">
+        0
+    </span>
+
+</button>
+
+
+<!-- BUY NOW MODAL -->
+
+<div
+    class="modal"
+    id="buyModal">
+
+    <div class="modal-box">
+
+        <span
+            class="close"
+            onclick="closeModal('buyModal')">
+            ×
+        </span>
+
+        <h2>
+            Order Details
+        </h2>
+
+        <div
+            class="selected-product"
+            id="selectedProduct">
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Quantity
+            </label>
+
+            <div class="quantity">
+
+                <button onclick="changeQuantity(-1)">
+                    −
+                </button>
+
+                <span id="quantity">
+                    1
+                </span>
+
+                <button onclick="changeQuantity(1)">
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                आपका नाम *
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="अपना नाम लिखें"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Mobile Number *
+            </label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="मोबाइल नंबर"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Delivery Address *
+            </label>
+
+            <textarea
+                id="customerAddress"
+                rows="3"
+                placeholder="पूरा पता लिखें">
+            </textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                दुकान से दूरी *
+            </label>
+
+            <select id="distance">
+
+                <option value="">
+                    दूरी चुनें
+                </option>
+
+                <option value="0.5 KM या कम">
+                    0.5 KM या कम
+                </option>
+
+                <option value="0.5 KM से अधिक">
+                    0.5 KM से अधिक
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            class="submit-btn"
+            onclick="placeOrder()">
+
+            Order Submit करें
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- CART MODAL -->
+
+<div
+    class="modal"
+    id="cartModal">
+
+    <div class="modal-box">
+
+        <span
+            class="close"
+            onclick="closeModal('cartModal')">
+            ×
+        </span>
+
+        <h2>
+            Your Cart
+        </h2>
+
+        <div id="cartItems">
+        </div>
+
+        <div class="cart-total">
+
+            Total: ₹<span id="cartTotal">0</span>
+
+        </div>
+
+        <div
+            class="delivery-status"
+            id="deliveryStatus">
+        </div>
+
+        <button
+            class="checkout-btn"
+            onclick="checkoutCart()">
+
+            Checkout / Order करें
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
 
 <footer>
-  <strong>अदिति ब्यूटी एंड कॉस्मेटिक हब</strong><br>
-  गोखिया रोड के सामने, नरैनी रोड, अतर्रा<br>
-  प्रो. किशन कुशवाहा<br>
-  हेल्पलाइन नंबर<br>
-  9335289902 | 9129033788<br>
-  डिलीवरी चार्ज: ₹10/km
+
+    <h3>
+        अदिति ब्यूटी एंड कॉस्मेटिक हब
+    </h3>
+
+    <p>
+        ब्यूटी पार्लर • कॉस्मेटिक्स • सिलाई सेंटर
+    </p>
+
+    <p>
+        गोखिया रोड के सामने, नरैनी रोड, अतर्रा
+    </p>
+
+    <p class="footer-owner">
+        प्रो. किशन कुशवाहा
+    </p>
+
+    <p class="footer-help">
+        Help Line: 9335289902, 9129033788
+    </p>
+
+    <p class="footer-delivery">
+        ₹50 से अधिक की खरीदारी पर 0.5 KM के अंदर
+        FREE HOME DELIVERY
+    </p>
+
 </footer>
 
-<!-- PRODUCT POPUP -->
-<div class="overlay" id="productOverlay">
-  <div class="modal">
-    <button class="close" onclick="closeModal('productOverlay')">×</button>
-    <img id="popupImg">
-    <h2 id="popupName"></h2>
-    <div id="popupDetails"></div>
-    <div class="modal-price" id="popupPrice"></div>
-
-    <div class="qty">
-      <button onclick="changePopupQty(-1)">−</button>
-      <span id="popupQty">1</span>
-      <button onclick="changePopupQty(1)">+</button>
-    </div>
-
-    <button class="form-btn" onclick="addPopupToCart()">🛒 कार्ट में डालें</button>
-    <br><br>
-    <button class="form-btn" onclick="buyPopupNow()">⚡ अभी खरीदें</button>
-  </div>
-</div>
-
-<!-- CART POPUP -->
-<div class="overlay" id="cartOverlay">
-  <div class="modal">
-    <button class="close" onclick="closeModal('cartOverlay')">×</button>
-    <h2>🛒 मेरा कार्ट</h2>
-    <div id="cartItems"></div>
-    <div class="total" id="cartTotal">कुल: ₹0</div>
-    <button class="form-btn" onclick="openCheckout()">आगे बढ़ें</button>
-  </div>
-</div>
-
-  <!-- CHECKOUT POPUP -->
-<div class="overlay" id="checkoutOverlay">
-  <div class="modal">
-    <button class="close" onclick="closeModal('checkoutOverlay')">×</button>
-
-    <h2>📝 ऑर्डर की जानकारी</h2>
-
-    <label>ग्राहक का नाम</label>
-    <input id="customerName" placeholder="अपना नाम लिखें">
-
-    <label>मोबाइल नंबर</label>
-    <input id="customerPhone" type="tel" placeholder="मोबाइल नंबर">
-
-    <label>पूरा पता</label>
-    <textarea id="customerAddress" rows="3"
-      placeholder="अपना पूरा पता लिखें"></textarea>
-
-    <label>डिलीवरी दूरी</label>
-    <select id="distance" onchange="updateCheckoutTotal()">
-      <option value="0">1 किलोमीटर से कम</option>
-      <option value="1">1 किलोमीटर</option>
-      <option value="2">2 किलोमीटर</option>
-      <option value="3">3 किलोमीटर</option>
-    </select>
-
-    <label>भुगतान का तरीका</label>
-    <select id="paymentMethod" onchange="paymentChanged()">
-      <option value="cod">Cash on Delivery</option>
-      <option value="upi">Online Payment</option>
-    </select>
-
-    <div id="upiBox"
-         style="display:none;background:#fff0f5;padding:10px;border-radius:9px;margin-bottom:10px">
-      Online Payment चुनने पर UPI ऐप खुलेगा।
-      <br>
-      <small>UPI ID को नीचे JavaScript में सेट करें।</small>
-    </div>
-
-    <div class="total" id="checkoutTotal">कुल: ₹0</div>
-
-    <button class="form-btn" onclick="placeOrder()">
-      ✅ ऑर्डर भेजें
-    </button>
-  </div>
-</div>
-
-<!-- ORDERS POPUP -->
-<div class="overlay" id="ordersOverlay">
-  <div class="modal">
-    <button class="close" onclick="closeModal('ordersOverlay')">×</button>
-    <h2>📦 मेरे ऑर्डर</h2>
-    <div id="ordersList"></div>
-  </div>
-</div>
-
-<!-- THANK YOU POPUP -->
-<div class="overlay" id="thankOverlay">
-  <div class="modal" style="text-align:center">
-    <h2>🎉 धन्यवाद!</h2>
-    <p>आपका ऑर्डर सफलतापूर्वक तैयार हो गया है।</p>
-    <p>आपका ऑर्डर नंबर:</p>
-    <h2 id="orderNumber"></h2>
-
-    <button class="form-btn" onclick="closeModal('thankOverlay')">
-      ठीक है
-    </button>
-  </div>
-</div>
 
 <script>
 
-/* =========================
-   WEBSITE SETTINGS
-========================= */
+/* SHOP EMAIL */
 
-const WHATSAPP_NUMBER = "919335289902";
+const SHOP_EMAIL =
+"vishnudattkushwaha9876@gmail.com";
 
-/* अपना असली UPI ID यहां डालें */
-const SHOP_UPI_ID = "YOUR_UPI_ID@bank";
 
-const DELIVERY_PER_KM = 10;
+/* CART */
 
+let cart = [];
 
-/* =========================
-   COSMETICS - 20 SLOTS
-========================= */
+let currentProduct = "";
+let currentPrice = 0;
+let currentQuantity = 1;
 
-const cosmetics = [
 
-{
- id:1,
- name:"Ponds Face Powder",
- details:"19g",
- price:10,
- image:"https://kommodo.ai/i/RQUnUwFBFgt3rPZ7c5o3"
-},
+/* ================================
+   CATEGORY FILTER
+================================ */
 
-{
- id:2,
- name:"Ponds Face Powder",
- details:"80g",
- price:102,
- image:"https://kommodo.ai/i/qfN8K6vZFJ3vNIWKu2WA"
-},
+function filterCategory(category, button){
 
-{
- id:3,
- name:"Ponds Face Powder",
- details:"40g",
- price:53,
- image:"https://kommodo.ai/i/c37fM2KoK4N5YCQSAhxX"
-},
+    /* सभी category buttons से active हटाओ */
 
-...Array.from({length:17},(_,i)=>({
- id:i+4,name:"",details:"",price:0,image:""
-}))
+    const buttons =
+        document.querySelectorAll(".categories button");
 
-];
-
-
-/* =========================
-   BEAUTY - 20 SLOTS
-========================= */
-
-const beauty = [
-
-{
- id:21,
- name:"White Tone Cream",
- details:"",
- price:48,
- image:"https://kommodo.ai/i/zTsR999v8oejqbQaaQ5i"
-},
-
-{
- id:22,
- name:"Skin Shine Cream",
- details:"",
- price:50,
- image:"https://kommodo.ai/i/C93jsplDlIgI0uJjMTT6"
-},
-
-{
- id:23,
- name:"Betanovate-C",
- details:"",
- price:80,
- image:"https://kommodo.ai/i/tKWVSxntRTmNg1gissDz"
-},
-
-{
- id:24,
- name:"Melamine",
- details:"",
- price:87,
- image:"https://kommodo.ai/i/QxcUCBG6DiTcZlghqCxj"
-},
-
-{
- id:25,
- name:"Roop Mantra",
- details:"",
- price:125,
- image:"https://kommodo.ai/i/NRy5bLu5JezvQrZkkCLj"
-},
-
-{
- id:26,
- name:"Dove Shampoo",
- details:"",
- price:60,
- image:"https://kommodo.ai/i/4xKFzNaDzgBeLdaFRMgb"
-},
-
-{
- id:27,
- name:"Sunsilk Shampoo",
- details:"",
- price:54,
- image:"https://kommodo.ai/i/OuPEt223VmyTQ7namsOp"
-},
-
-{
- id:28,
- name:"Clinic Plus",
- details:"",
- price:55,
- image:"https://kommodo.ai/i/XQaOy5CqtIKZFz8CbLYO"
-},
-
-{
- id:29,
- name:"Ponds Anti-Dullness Face Wash",
- details:"50g",
- price:115,
- image:"https://kommodo.ai/i/BYl8U3F58NcoGIYUU0q3"
-},
-
-{
- id:30,
- name:"Ponds Detox Face Wash",
- details:"50g",
- price:138,
- image:"https://kommodo.ai/i/5nlmcTzfA1WpHFPNy0w6"
-},
-
-{
- id:31,
- name:"Ponds Anti-Dullness Face Wash",
- details:"19g",
- price:20,
- image:"https://kommodo.ai/i/kCVgw4DdifkgU37txvZN"
-},
-
-{
- id:32,
- name:"Patanjali Saundarya Face Wash",
- details:"60g",
- price:70,
- image:"https://kommodo.ai/i/4CsH7z4L1EespHmW3kKx"
-},
-
-{
- id:33,
- name:"Patanjali Saundarya Aloevera Gel",
- details:"60 ml",
- price:55,
- image:"https://kommodo.ai/i/lVdZglYyLBVTQaqOklEy"
-},
-
-{
- id:34,
- name:"Patanjali Saundarya Face Wash",
- details:"100g",
- price:105,
- image:"https://kommodo.ai/i/08ngLKvc17ZQBlcjc08q"
-},
-
-{
- id:35,
- name:"Glow & Lovely Bright Glow Face Wash",
- details:"50g",
- price:97,
- image:"https://kommodo.ai/i/D0LonymG7ElLHMM0TkTW"
-},
-
-...Array.from({length:5},(_,i)=>({
- id:i+36,name:"",details:"",price:0,image:""
-}))
-
-];
-
-
-/* =========================
-   BANGLES / MALA - 20 SLOTS
-========================= */
-
-const bangles = Array.from({length:20},(_,i)=>({
- id:i+41,
- name:"",
- details:"",
- price:0,
- image:""
-}));
-
-
-/* सभी प्रोडक्ट एक साथ */
-
-const allProducts = [
- ...cosmetics,
- ...beauty,
- ...bangles
-];
-
-let currentCategory = "all";
-let selectedProduct = null;
-let popupQty = 1;
-
-let cart = JSON.parse(localStorage.getItem("aditiCart") || "[]");
-let orders = JSON.parse(localStorage.getItem("aditiOrders") || "[]");
-
-        </script>
-
-
-  <script>
-
-/* =========================
-   PRODUCT DISPLAY
-========================= */
-
-function getProducts(){
-  if(currentCategory === "cosmetics") return cosmetics;
-  if(currentCategory === "beauty") return beauty;
-  if(currentCategory === "bangles") return bangles;
-  return allProducts;
-}
-
-function showCategory(category,button){
-
-  currentCategory = category;
-
-  document.querySelectorAll(".category button")
-    .forEach(b=>b.classList.remove("active"));
-
-  button.classList.add("active");
-
-  const titles = {
-    all:"सभी प्रोडक्ट",
-    cosmetics:"कॉस्मेटिक प्रोडक्ट",
-    beauty:"ब्यूटी प्रोडक्ट",
-    bangles:"चूड़ी / माला"
-  };
-
-  document.getElementById("sectionTitle").innerText =
-    titles[category];
-
-  renderProducts();
-}
-
-
-function renderProducts(){
-
-  const box = document.getElementById("products");
-
-  const list = getProducts().filter(p=>p.name && p.image);
-
-  if(!list.length){
-    box.innerHTML =
-      '<div class="empty">इस कैटेगरी में अभी प्रोडक्ट नहीं जोड़ा गया है।</div>';
-    return;
-  }
-
-  box.innerHTML = list.map(p=>`
-
-    <div class="card" onclick="openProduct(${p.id})">
-
-      <img src="${p.image}" alt="${p.name}">
-
-      <div class="card-body">
-
-        <h3>${p.name}</h3>
-
-        <div class="details">${p.details || ""}</div>
-
-        <div class="price">₹${p.price}</div>
-
-        <div class="card-buttons">
-
-          <button class="action-btn"
-            onclick="event.stopPropagation();addToCart(${p.id})">
-            🛒 कार्ट
-          </button>
-
-          <button class="buy-btn"
-            onclick="event.stopPropagation();buyNow(${p.id})">
-            ⚡ खरीदें
-          </button>
-
-        </div>
-
-      </div>
-    </div>
-  `).join("");
-}
-
-
-/* =========================
-   PRODUCT POPUP
-========================= */
-
-function openProduct(id){
-
-  selectedProduct =
-    allProducts.find(p=>p.id===id);
-
-  if(!selectedProduct) return;
-
-  popupQty = 1;
-
-  document.getElementById("popupImg").src =
-    selectedProduct.image;
-
-  document.getElementById("popupName").innerText =
-    selectedProduct.name;
-
-  document.getElementById("popupDetails").innerText =
-    selectedProduct.details || "";
-
-  document.getElementById("popupPrice").innerText =
-    "₹" + selectedProduct.price;
-
-  document.getElementById("popupQty").innerText =
-    popupQty;
-
-  openModal("productOverlay");
-}
-
-
-function changePopupQty(n){
-
-  popupQty += n;
-
-  if(popupQty < 1) popupQty = 1;
-
-  document.getElementById("popupQty").innerText =
-    popupQty;
-}
-
-
-function addPopupToCart(){
-
-  for(let i=0;i<popupQty;i++){
-    addToCart(selectedProduct.id);
-  }
-
-  closeModal("productOverlay");
-}
-
-
-function buyPopupNow(){
-
-  cart = [];
-
-  for(let i=0;i<popupQty;i++){
-    cart.push({
-      id:selectedProduct.id,
-      qty:1
+    buttons.forEach(function(btn){
+        btn.classList.remove("active");
     });
-  }
-
-  saveCart();
-
-  closeModal("productOverlay");
-
-  openCheckout();
-}
 
 
-function buyNow(id){
+    /* जिस button को दबाया है उसे active करो */
 
-  cart = [{
-    id:id,
-    qty:1
-  }];
-
-  saveCart();
-
-  openCheckout();
-}
+    button.classList.add("active");
 
 
-/* =========================
-   CART
-========================= */
+    /* सभी sections */
 
-function addToCart(id){
+    const sections =
+        document.querySelectorAll(".category-section");
 
-  const found =
-    cart.find(x=>x.id===id);
 
-  if(found){
-    found.qty++;
-  }else{
-    cart.push({
-      id:id,
-      qty:1
+    sections.forEach(function(section){
+
+        const sectionCategory =
+            section.getAttribute("data-section");
+
+
+        if(category === "all"){
+
+            section.style.display = "block";
+
+        }
+
+        else if(sectionCategory === category){
+
+            section.style.display = "block";
+
+        }
+
+        else{
+
+            section.style.display = "none";
+
+        }
+
     });
-  }
 
-  saveCart();
 
-  alert("प्रोडक्ट कार्ट में जोड़ दिया गया।");
+    /* Search को खाली करो */
+
+    document.getElementById("search").value = "";
+
+    document.getElementById("noResult").style.display = "none";
+
 }
 
 
-function saveCart(){
+/* ================================
+   SEARCH
+================================ */
 
-  localStorage.setItem(
-    "aditiCart",
-    JSON.stringify(cart)
-  );
+function searchProducts(){
 
-  updateCartCount();
+    const searchText =
+        document.getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const sections =
+        document.querySelectorAll(".category-section");
+
+    const products =
+        document.querySelectorAll(".product");
+
+
+    let found = false;
+
+
+    /* Search करते समय सभी category sections दिखाओ */
+
+    sections.forEach(function(section){
+        section.style.display = "block";
+    });
+
+
+    products.forEach(function(product){
+
+        const name =
+            product.getAttribute("data-name")
+            .toLowerCase();
+
+
+        if(name.includes(searchText)){
+
+            product.style.display = "block";
+            found = true;
+
+        }
+
+        else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    /* खाली search पर सभी products */
+
+    if(searchText === ""){
+
+        products.forEach(function(product){
+            product.style.display = "block";
+        });
+
+        document.getElementById("noResult").style.display =
+            "none";
+
+        return;
+    }
+
+
+    /* जिस category में product नहीं है उसे छुपाओ */
+
+    sections.forEach(function(section){
+
+        const visibleProducts =
+            section.querySelectorAll(
+                ".product[style*='display: block']"
+            );
+
+
+        let hasVisible = false;
+
+
+        section.querySelectorAll(".product")
+        .forEach(function(product){
+
+            if(product.style.display !== "none"){
+                hasVisible = true;
+            }
+
+        });
+
+
+        if(!hasVisible){
+            section.style.display = "none";
+        }
+
+    });
+
+
+    if(!found){
+
+        document.getElementById("noResult").style.display =
+            "block";
+
+    }
+
+    else{
+
+        document.getElementById("noResult").style.display =
+            "none";
+
+    }
+
 }
 
 
-function updateCartCount(){
+/* ================================
+   BUY NOW
+================================ */
 
-  const count =
-    cart.reduce((sum,x)=>sum+x.qty,0);
+function buyNow(name, price){
 
-  document.getElementById("cartCount")
-    .innerText = count;
+    currentProduct = name;
+    currentPrice = price;
+    currentQuantity = 1;
+
+    document.getElementById("quantity").innerText = "1";
+
+    updateSelectedProduct();
+
+    document.getElementById("buyModal").style.display =
+        "block";
 }
 
+
+/* ================================
+   SELECTED PRODUCT
+================================ */
+
+function updateSelectedProduct(){
+
+    const total =
+        currentPrice * currentQuantity;
+
+
+    document.getElementById("selectedProduct").innerHTML =
+
+        "<strong>Product:</strong> " +
+        currentProduct +
+
+        "<br>" +
+
+        "<strong>Price:</strong> ₹" +
+        currentPrice +
+
+        "<br>" +
+
+        "<strong>Quantity:</strong> " +
+        currentQuantity +
+
+        "<br>" +
+
+        "<strong>Total:</strong> ₹" +
+        total;
+}
+
+
+/* ================================
+   QUANTITY
+================================ */
+
+function changeQuantity(change){
+
+    currentQuantity += change;
+
+
+    if(currentQuantity < 1){
+        currentQuantity = 1;
+    }
+
+
+    document.getElementById("quantity").innerText =
+        currentQuantity;
+
+
+    updateSelectedProduct();
+}
+
+
+/* ================================
+   ADD TO CART
+================================ */
+
+function addToCart(name, price){
+
+    const existing =
+        cart.find(function(item){
+            return item.name === name;
+        });
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }
+
+    else{
+
+        cart.push({
+            name:name,
+            price:price,
+            quantity:1
+        });
+
+    }
+
+
+    updateCart();
+
+    alert("Product Cart में Add हो गया।");
+}
+
+
+/* ================================
+   UPDATE CART
+================================ */
+
+function updateCart(){
+
+    let count = 0;
+
+
+    cart.forEach(function(item){
+        count += item.quantity;
+    });
+
+
+    document.getElementById("cartCount").innerText =
+        count;
+}
+
+
+/* ================================
+   OPEN CART
+================================ */
 
 function openCart(){
 
-  renderCart();
+    let html = "";
+    let total = 0;
 
-  openModal("cartOverlay");
+
+    if(cart.length === 0){
+
+        html =
+        "<p style='text-align:center;padding:25px'>" +
+        "Cart खाली है।" +
+        "</p>";
+
+    }
+
+    else{
+
+        cart.forEach(function(item,index){
+
+            const itemTotal =
+                item.price * item.quantity;
+
+            total += itemTotal;
+
+
+            html +=
+
+            "<div class='cart-item'>" +
+
+                "<div class='cart-item-top'>" +
+
+                    "<div class='cart-item-name'>" +
+                        item.name +
+                    "</div>" +
+
+                    "<div>" +
+                        "₹" + itemTotal +
+                    "</div>" +
+
+                "</div>" +
+
+                "<div class='cart-controls'>" +
+
+                    "<button onclick='changeCartQuantity(" +
+                    index + ",-1)'>−</button>" +
+
+                    "<span>" +
+                        item.quantity +
+                    "</span>" +
+
+                    "<button onclick='changeCartQuantity(" +
+                    index + ",1)'>+</button>" +
+
+                    "<button class='remove' " +
+                    "onclick='removeFromCart(" +
+                    index + ")'>Remove</button>" +
+
+                "</div>" +
+
+            "</div>";
+
+        });
+
+    }
+
+
+    document.getElementById("cartItems").innerHTML =
+        html;
+
+
+    document.getElementById("cartTotal").innerText =
+        total;
+
+
+    if(total >= 50){
+
+        document.getElementById("deliveryStatus").innerText =
+            "FREE HOME DELIVERY उपलब्ध है (0.5 KM के अंदर)।";
+
+    }
+
+    else{
+
+        document.getElementById("deliveryStatus").innerText =
+            "₹50 से अधिक की खरीदारी पर FREE HOME DELIVERY।";
+
+    }
+
+
+    document.getElementById("cartModal").style.display =
+        "block";
 }
 
 
-function renderCart(){
+/* ================================
+   CHANGE CART QUANTITY
+================================ */
 
-  const box =
-    document.getElementById("cartItems");
+function changeCartQuantity(index,change){
 
-  if(!cart.length){
+    cart[index].quantity += change;
 
-    box.innerHTML =
-      '<div class="empty">आपका कार्ट खाली है।</div>';
 
-    document.getElementById("cartTotal")
-      .innerText = "कुल: ₹0";
+    if(cart[index].quantity <= 0){
 
-    return;
-  }
+        cart.splice(index,1);
 
-  let total = 0;
+    }
 
-  box.innerHTML = cart.map(item=>{
 
-    const p =
-      allProducts.find(x=>x.id===item.id);
+    updateCart();
 
-    if(!p) return "";
-
-    total += p.price * item.qty;
-
-    return `
-      <div class="cart-row">
-
-        <img src="${p.image}">
-
-        <div class="cart-info">
-          <b>${p.name}</b><br>
-          ₹${p.price} × ${item.qty}
-        </div>
-
-        <div class="cart-controls">
-
-          <button onclick="changeCartQty(${p.id},-1)">
-            −
-          </button>
-
-          <span>${item.qty}</span>
-
-          <button onclick="changeCartQty(${p.id},1)">
-            +
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-  }).join("");
-
-  document.getElementById("cartTotal")
-    .innerText = "कुल: ₹" + total;
+    openCart();
 }
 
 
-function changeCartQty(id,n){
+/* ================================
+   REMOVE CART ITEM
+================================ */
 
-  const item =
-    cart.find(x=>x.id===id);
+function removeFromCart(index){
 
-  if(!item) return;
+    cart.splice(index,1);
 
-  item.qty += n;
+    updateCart();
 
-  if(item.qty <= 0){
-    cart = cart.filter(x=>x.id!==id);
-  }
-
-  saveCart();
-
-  renderCart();
+    openCart();
 }
 
 
-/* =========================
-   CHECKOUT
-========================= */
+/* ================================
+   CHECKOUT CART
+================================ */
 
-function openCheckout(){
+function checkoutCart(){
 
-  if(!cart.length){
-    alert("पहले कोई प्रोडक्ट कार्ट में जोड़ें।");
-    return;
-  }
+    if(cart.length === 0){
 
-  closeModal("cartOverlay");
+        alert("Cart खाली है।");
 
-  updateCheckoutTotal();
-
-  openModal("checkoutOverlay");
-}
+        return;
+    }
 
 
-function paymentChanged(){
-
-  const method =
-    document.getElementById("paymentMethod").value;
-
-  document.getElementById("upiBox").style.display =
-    method === "upi" ? "block" : "none";
-}
+    closeModal("cartModal");
 
 
-function calculateCartTotal(){
-
-  return cart.reduce((total,item)=>{
-
-    const p =
-      allProducts.find(x=>x.id===item.id);
-
-    return total + (p ? p.price * item.qty : 0);
-
-  },0);
-}
+    document.getElementById("buyModal").style.display =
+        "block";
 
 
-function updateCheckoutTotal(){
-
-  const distance =
-    Number(document.getElementById("distance").value);
-
-  const productTotal =
-    calculateCartTotal();
-
-  const delivery =
-    distance * DELIVERY_PER_KM;
-
-  document.getElementById("checkoutTotal")
-    .innerText =
-    "प्रोडक्ट ₹" + productTotal +
-    " + डिलीवरी ₹" + delivery +
-    " = कुल ₹" + (productTotal + delivery);
-}
+    currentProduct =
+        cart.map(function(item){
+            return item.name +
+            " x " +
+            item.quantity;
+        }).join(", ");
 
 
-/* =========================
-   PLACE ORDER
-========================= */
+    currentPrice = 0;
 
-function placeOrder(){
-
-  const name =
-    document.getElementById("customerName").value.trim();
-
-  const phone =
-    document.getElementById("customerPhone").value.trim();
-
-  const address =
-    document.getElementById("customerAddress").value.trim();
-
-  const distance =
-    Number(document.getElementById("distance").value);
-
-  const payment =
-    document.getElementById("paymentMethod").value;
-
-  if(!name || !phone || !address){
-
-    alert("कृपया नाम, मोबाइल नंबर और पता भरें।");
-    return;
-  }
-
-  if(!cart.length){
-
-    alert("कार्ट खाली है।");
-    return;
-  }
-
-  const productTotal =
-    calculateCartTotal();
-
-  const delivery =
-    distance * DELIVERY_PER_KM;
-
-  const grandTotal =
-    productTotal + delivery;
-
-  const orderNo =
-    "AD" + Date.now().toString().slice(-6);
-
-  const orderItems =
-    cart.map(item=>{
-
-      const p =
-        allProducts.find(x=>x.id===item.id);
-
-      return {
-        name:p.name,
-        details:p.details,
-        price:p.price,
-        qty:item.qty
-      };
-
+    cart.forEach(function(item){
+        currentPrice +=
+            item.price * item.quantity;
     });
 
 
-  const order = {
-
-    orderNo:orderNo,
-
-    date:new Date().toLocaleString("hi-IN"),
-
-    name:name,
-
-    phone:phone,
-
-    address:address,
-
-    distance:distance,
-
-    payment:
-      payment==="upi"
-      ? "Online Payment"
-      : "Cash on Delivery",
-
-    items:orderItems,
-
-    total:grandTotal
-
-  };
+    currentQuantity = 1;
 
 
-  orders.unshift(order);
-
-  localStorage.setItem(
-    "aditiOrders",
-    JSON.stringify(orders)
-  );
+    document.getElementById("quantity").innerText =
+        "1";
 
 
-  /* WhatsApp संदेश */
+    document.getElementById("selectedProduct").innerHTML =
 
-  let message =
-    "🛍️ *अदिति ब्यूटी एंड कॉस्मेटिक हब*%0A%0A";
+        "<strong>Cart Order</strong>" +
 
-  message +=
-    "📦 *ऑर्डर नंबर:* " + orderNo + "%0A";
+        "<br><br>" +
 
-  message +=
-    "👤 नाम: " + name + "%0A";
+        "<strong>Products:</strong><br>" +
 
-  message +=
-    "📞 मोबाइल: " + phone + "%0A";
+        cart.map(function(item){
+            return item.name +
+            " × " +
+            item.quantity +
+            " = ₹" +
+            (item.price * item.quantity);
+        }).join("<br>") +
 
-  message +=
-    "📍 पता: " + address + "%0A";
+        "<br><br>" +
 
-  message +=
-    "🚚 दूरी: " +
-    (distance===0
-      ? "1 किलोमीटर से कम"
-      : distance+" किलोमीटर") +
-    "%0A";
-
-  message +=
-    "💳 भुगतान: " + order.payment + "%0A%0A";
-
-  message += "*प्रोडक्ट:*%0A";
-
-
-  orderItems.forEach(item=>{
-
-    message +=
-      "• " + item.name +
-      (item.details ? " ("+item.details+")" : "") +
-      " × " + item.qty +
-      " = ₹" + (item.price*item.qty) +
-      "%0A";
-
-  });
-
-
-  message +=
-    "%0A🚚 डिलीवरी चार्ज: ₹" +
-    delivery;
-
-  message +=
-    "%0A💰 *कुल राशि: ₹" +
-    grandTotal + "*";
-
-
-  /* Cart खाली */
-
-  cart = [];
-
-  saveCart();
-
-
-  /* Thank You */
-
-  document.getElementById("orderNumber")
-    .innerText = orderNo;
-
-  closeModal("checkoutOverlay");
-
-  openModal("thankOverlay");
-
-
-  /* WhatsApp */
-
-  const whatsappURL =
-    "https://wa.me/" +
-    WHATSAPP_NUMBER +
-    "?text=" + message;
-
-  setTimeout(()=>{
-
-    window.open(
-      whatsappURL,
-      "_blank"
-    );
-
-  },700);
-
-
-  /* Online Payment */
-
-  if(payment==="upi" &&
-     SHOP_UPI_ID !== "YOUR_UPI_ID@bank"){
-
-    setTimeout(()=>{
-
-      const upiURL =
-        "upi://pay?pa=" +
-        encodeURIComponent(SHOP_UPI_ID) +
-        "&pn=" +
-        encodeURIComponent("अदिति ब्यूटी एंड कॉस्मेटिक हब") +
-        "&am=" +
-        grandTotal +
-        "&cu=INR";
-
-      window.location.href = upiURL;
-
-    },1400);
-
-  }
+        "<strong>Total: ₹" +
+        currentPrice +
+        "</strong>";
 
 }
 
 
-/* =========================
-   MY ORDERS
-========================= */
+/* ================================
+   PLACE ORDER
+================================ */
 
-function openOrders(){
+function placeOrder(){
 
-  const box =
-    document.getElementById("ordersList");
-
-  if(!orders.length){
-
-    box.innerHTML =
-      '<div class="empty">अभी कोई ऑर्डर नहीं है।</div>';
-
-    openModal("ordersOverlay");
-
-    return;
-  }
+    const name =
+        document.getElementById("customerName")
+        .value.trim();
 
 
-  box.innerHTML =
-    orders.map(order=>`
-
-      <div class="order-box">
-
-        <b>ऑर्डर #${order.orderNo}</b><br>
-
-        <small>${order.date}</small>
-
-        <hr>
-
-        ${order.items.map(item=>`
-          • ${item.name}
-          ${item.details ? "("+item.details+")" : ""}
-          × ${item.qty}
-          = ₹${item.price*item.qty}<br>
-        `).join("")}
-
-        <hr>
-
-        डिलीवरी: ₹${order.total -
-          order.items.reduce(
-            (s,i)=>s+(i.price*i.qty),0
-          )}
-
-        <br>
-
-        <b>कुल: ₹${order.total}</b>
-
-        <br>
-        भुगतान: ${order.payment}
-
-      </div>
-
-    `).join("");
+    const phone =
+        document.getElementById("customerPhone")
+        .value.trim();
 
 
-  openModal("ordersOverlay");
+    const address =
+        document.getElementById("customerAddress")
+        .value.trim();
+
+
+    const distance =
+        document.getElementById("distance")
+        .value;
+
+
+    if(name === "" ||
+       phone === "" ||
+       address === "" ||
+       distance === ""){
+
+        alert("कृपया सभी जरूरी जानकारी भरें।");
+
+        return;
+    }
+
+
+    let productDetails = "";
+
+
+    if(cart.length > 0){
+
+        productDetails =
+            cart.map(function(item){
+
+                return item.name +
+                " × " +
+                item.quantity +
+                " = ₹" +
+                (item.price * item.quantity);
+
+            }).join("\n");
+
+    }
+
+    else{
+
+        productDetails =
+            currentProduct +
+            " × " +
+            currentQuantity +
+            " = ₹" +
+            (currentPrice * currentQuantity);
+
+    }
+
+
+    const total =
+        cart.length > 0
+        ? cart.reduce(function(sum,item){
+
+            return sum +
+            (item.price * item.quantity);
+
+        },0)
+        : currentPrice * currentQuantity;
+
+
+    /* WhatsApp message */
+
+    const message =
+
+        "नया Order\n\n" +
+
+        "Customer Name: " +
+        name +
+
+        "\nMobile: " +
+        phone +
+
+        "\nAddress: " +
+        address +
+
+        "\nDistance: " +
+        distance +
+
+        "\n\nProducts:\n" +
+
+        productDetails +
+
+        "\n\nTotal: ₹" +
+        total;
+
+
+    const whatsappNumber =
+        "9193352809902";
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(whatsappURL,"_blank");
+
 }
 
 
-/* =========================
-   MODAL
-========================= */
-
-function openModal(id){
-
-  document.getElementById(id)
-    .style.display="flex";
-}
-
+/* ================================
+   CLOSE MODAL
+================================ */
 
 function closeModal(id){
 
-  document.getElementById(id)
-    .style.display="none";
+    document.getElementById(id).style.display =
+        "none";
 }
 
 
-/* बाहर क्लिक करने पर popup बंद */
+/* ================================
+   CLICK OUTSIDE MODAL
+================================ */
 
-document.querySelectorAll(".overlay")
-.forEach(overlay=>{
+window.onclick = function(event){
 
-  overlay.addEventListener("click",e=>{
+    const buyModal =
+        document.getElementById("buyModal");
 
-    if(e.target===overlay){
-      overlay.style.display="none";
+    const cartModal =
+        document.getElementById("cartModal");
+
+
+    if(event.target === buyModal){
+
+        buyModal.style.display = "none";
+
     }
 
-  });
 
-});
+    if(event.target === cartModal){
 
+        cartModal.style.display = "none";
 
-/* शुरुआत में प्रोडक्ट दिखाएं */
+    }
 
-renderProducts();
-
-updateCartCount();
+};
 
 </script>
 
 </body>
-  </html>
+</html>
