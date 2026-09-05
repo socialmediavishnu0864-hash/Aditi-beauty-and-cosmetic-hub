@@ -1,7 +1,7 @@
 // Products Database
 const products = [
-    { id: 1, name: "Premium Lipstick", price: 120, category: "cosmetics", image: "IMAGE_URL_HERE" },
-    { id: 2, name: "Black Kajal", price: 60, category: "cosmetics", image: "IMAGE_URL_HERE" },
+    { id: 1, name: "Premium Lipstick", price: 120, category: "cosmetics", image: "https://via.placeholder.com/200x175?text=Premium+Lipstick" },
+    { id: 2, name: "Black Kajal", price: 60, category: "cosmetics", image: "https://via.placeholder.com/200x175?text=Black+Kajal" },
     { id: 3, name: "Vicco Turmeric Skin Cream 15g", price: 78, category: "beauty", image: "https://res.cloudinary.com/z59shoo6/image/upload/f_auto,q_auto/file_00000000032882119d95a69ee471c64f" },
     { id: 4, name: "Vicco Turmeric Skin Cream 30g", price: 150, category: "beauty", image: "https://res.cloudinary.com/z59shoo6/image/upload/f_auto,q_auto/file_00000000032882119d95a69ee471c64f" },
     { id: 5, name: "White Tone Cream 15g", price: 48, category: "beauty", image: "https://kommodo.ai/i/zTsR999v8oejqbQaaQ5i" },
@@ -11,6 +11,11 @@ const products = [
     { id: 9, name: "Roop Mantra 30g", price: 125, category: "beauty", image: "https://kommodo.ai/i/NRy5bLu5JezvQrZk" },
     { id: 10, name: "Dove Shampoo", price: 95, category: "beauty", image: "https://kommodo.ai/i/4xKFzNaDzgBeLdaFRMgb" }
 ];
+
+// Delivery Charges per KM
+const DELIVERY_RATE_PER_KM = 10;
+const MIN_ORDER = 50;
+const OWNER_WHATSAPP = "919129033788"; // WhatsApp number without + sign
 
 // Cart Array
 let cart = [];
@@ -185,13 +190,38 @@ function updateCartCount() {
     }
 }
 
+// Calculate Delivery Charge
+function calculateDeliveryCharge(distance) {
+    return distance * DELIVERY_RATE_PER_KM;
+}
+
+// Calculate Total with Delivery
+function calculateTotalWithDelivery(distance) {
+    let subtotal = 0;
+    cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+    
+    if (subtotal < MIN_ORDER) {
+        return { subtotal: subtotal, delivery: 0, total: subtotal, message: `₹50 से कम ऑर्डर पर डिलीवरी नहीं है` };
+    }
+    
+    const delivery = calculateDeliveryCharge(distance);
+    return { subtotal: subtotal, delivery: delivery, total: subtotal + delivery, message: "" };
+}
+
 // Open Checkout Modal
 function openCheckout() {
+    if (cart.length === 0) {
+        alert("कृपया पहले कार्ट में प्रोडक्ट जोड़ें");
+        return;
+    }
+    
     const modal = document.getElementById("checkoutModal");
     if (!modal) {
         createCheckoutModal();
     }
-    displayCheckoutSummary();
+    displayCheckoutSummary(0);
     document.getElementById("checkoutModal").style.display = "block";
 }
 
@@ -221,19 +251,22 @@ function createCheckoutModal() {
                     <label>पता</label>
                     <textarea required placeholder="अपना पूरा पता दर्ज करें"></textarea>
                 </div>
-                
+
                 <div class="form-group">
-                    <label>शहर</label>
-                    <input type="text" required placeholder="शहर का नाम">
+                    <label>दूरी (Km में)</label>
+                    <input type="number" id="distance" required min="0" placeholder="अपने घर से दूरी दर्ज करें" oninput="updateDeliveryCharge()">
                 </div>
                 
-                <div class="form-group">
-                    <label>पिन कोड</label>
-                    <input type="text" required placeholder="6 अंकों का पिन कोड">
+                <div id="deliveryInfo" class="delivery-status" style="background:#f0f0f0; padding:10px; border-radius:5px; margin-bottom:10px;">
+                    <p><strong>डिलीवरी चार्ज:</strong> ₹<span id="deliveryAmount">0</span>/Km</p>
+                    <p style="color:#8d0038; font-size:14px;">कुल डिलीवरी: ₹<span id="totalDelivery">0</span></p>
+                </div>
+
+                <div id="finalTotal" style="background:#fff2a8; padding:12px; border-radius:5px; margin-bottom:12px; border-left:4px solid #8d0038;">
+                    <p style="font-weight:bold; font-size:16px;">अंतिम कुल: ₹<span id="grandTotal">0</span></p>
                 </div>
                 
-                <div id="deliveryInfo" class="delivery-status"></div>
-                <button type="submit" class="submit-btn" onclick="submitOrder(event)">ऑर्डर प्लेस करें</button>
+                <button type="submit" class="submit-btn" onclick="submitOrder(event)">WhatsApp पर ऑर्डर भेजें</button>
             </form>
         </div>
     `;
@@ -241,33 +274,86 @@ function createCheckoutModal() {
 }
 
 // Display Checkout Summary
-function displayCheckoutSummary() {
-    let total = 0;
+function displayCheckoutSummary(distance = 0) {
+    let subtotal = 0;
     let summary = "<div class='selected-product'>";
     
     cart.forEach(item => {
-        total += item.price * item.quantity;
+        subtotal += item.price * item.quantity;
         summary += `<p>${item.name} (${item.quantity}x) - ₹${item.price * item.quantity}</p>`;
     });
     
-    summary += `<hr style="margin:10px 0"><p style="font-weight:bold;">कुल: ₹${total}</p>`;
-    summary += `<p style="color:#666; font-size:12px;">₹50 से अधिक की खरीदारी पर 10/Km डिलीवरी</p>`;
+    summary += `<hr style="margin:10px 0"><p style="font-weight:bold;">प्रोडक्ट कुल: ₹${subtotal}</p>`;
     summary += "</div>";
     
     document.getElementById("checkoutSummary").innerHTML = summary;
+    updateDeliveryCharge();
 }
 
-// Submit Order
+// Update Delivery Charge on distance input
+function updateDeliveryCharge() {
+    const distanceInput = document.getElementById("distance");
+    const distance = distanceInput ? parseFloat(distanceInput.value) || 0 : 0;
+    
+    const calculation = calculateTotalWithDelivery(distance);
+    
+    document.getElementById("deliveryAmount").textContent = DELIVERY_RATE_PER_KM;
+    document.getElementById("totalDelivery").textContent = calculation.delivery;
+    document.getElementById("grandTotal").textContent = calculation.total;
+}
+
+// Generate WhatsApp Message
+function generateWhatsAppMessage(name, phone, address, distance) {
+    let orderDetails = "📦 *नया ऑर्डर*\n\n";
+    orderDetails += `👤 नाम: ${name}\n`;
+    orderDetails += `📱 फोन: ${phone}\n`;
+    orderDetails += `📍 पता: ${address}\n`;
+    orderDetails += `📏 दूरी: ${distance} Km\n\n`;
+    
+    orderDetails += "*🛍️ ऑर्डर की गई वस्तुएं:*\n";
+    
+    let subtotal = 0;
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        orderDetails += `• ${item.name}\n  मात्रा: ${item.quantity}x\n  कीमत: ₹${itemTotal}\n\n`;
+    });
+    
+    const calculation = calculateTotalWithDelivery(distance);
+    
+    orderDetails += `-------------------\n`;
+    orderDetails += `प्रोडक्ट कुल: ₹${calculation.subtotal}\n`;
+    orderDetails += `डिलीवरी चार्ज: ₹${calculation.delivery}\n`;
+    orderDetails += `*अंतिम कुल: ₹${calculation.total}*\n`;
+    
+    return encodeURIComponent(orderDetails);
+}
+
+// Submit Order via WhatsApp
 function submitOrder(event) {
     event.preventDefault();
     
     const form = event.target;
-    const name = form.querySelector("input[type='text']").value;
-    const phone = form.querySelector("input[type='tel']").value;
-    const address = form.querySelector("textarea").value;
+    const inputs = form.querySelectorAll("input");
+    const name = inputs[0].value.trim();
+    const phone = inputs[1].value.trim();
+    const distance = parseFloat(inputs[2].value) || 0;
+    const address = form.querySelector("textarea").value.trim();
     
-    if (name && phone && address && phone.length === 10) {
-        alert(`आपका ऑर्डर सफलतापूर्वक प्लेस हो गया!\n\nनाम: ${name}\nफोन: ${phone}\n\nहम जल्द ही आपसे संपर्क करेंगे।`);
+    if (name && phone && address && distance >= 0 && phone.length === 10) {
+        const calculation = calculateTotalWithDelivery(distance);
+        
+        // Generate WhatsApp message
+        const message = generateWhatsAppMessage(name, phone, address, distance);
+        
+        // WhatsApp URL
+        const whatsappURL = `https://wa.me/${OWNER_WHATSAPP}?text=${message}`;
+        
+        // Show confirmation and redirect to WhatsApp
+        alert(`✅ आपका ऑर्डर WhatsApp पर भेजा जा रहा है।\n\nनाम: ${name}\nफोन: ${phone}\nदूरी: ${distance} Km\n\nअंतिम कुल: ₹${calculation.total}`);
+        
+        // Open WhatsApp
+        window.open(whatsappURL, "_blank");
         
         // Clear cart
         cart = [];
@@ -279,8 +365,15 @@ function submitOrder(event) {
         
         // Reset form
         form.reset();
+        
     } else {
-        alert("कृपया सभी जानकारी सही तरीके से भरें");
+        if (phone.length !== 10) {
+            alert("कृपया सही 10 अंकों का फोन नंबर दर्ज करें");
+        } else if (distance < 0) {
+            alert("कृपया सही दूरी दर्ज करें");
+        } else {
+            alert("कृपया सभी जानकारी सही तरीके से भरें");
+        }
     }
 }
 
@@ -296,7 +389,8 @@ function showNotification(message) {
         padding: 12px 16px;
         border-radius: 8px;
         z-index: 999;
-        animation: slideIn 0.3s ease;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     `;
     notification.textContent = message;
     document.body.appendChild(notification);
