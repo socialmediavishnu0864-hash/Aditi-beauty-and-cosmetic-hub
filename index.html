@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aditi Beauty & Cosmetic Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#FAF7F8;
+    color:#222;
+}
+
+/* HEADER */
+header{
+    background:#fff;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.header-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    color:#5D1024;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.logo span{
+    display:block;
+    color:#555;
+    font-size:11px;
+    font-weight:normal;
+    margin-top:3px;
+}
+
+.order-btn{
+    border:none;
+    background:#5D1024;
+    color:#fff;
+    padding:11px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.order-btn:hover{
+    background:#AB1241;
+}
+
+/* HERO */
+.hero{
+    max-width:1200px;
+    margin:20px auto;
+    padding:28px 20px;
+    background:#fff;
+    border-radius:14px;
+    text-align:center;
+    box-shadow:0 3px 15px rgba(0,0,0,.05);
+}
+
+.hero h1{
+    color:#5D1024;
+    font-size:27px;
+    margin-bottom:7px;
+}
+
+.hero p{
+    color:#555;
+    font-size:14px;
+}
+
+.delivery{
+    margin-top:14px;
+    display:inline-block;
+    background:#F8E8ED;
+    color:#5D1024;
+    padding:9px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* SEARCH */
+.search-area{
+    max-width:1200px;
+    margin:0 auto 18px;
+    padding:0 18px;
+}
+
+.search{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+    background:#fff;
+}
+
+.search:focus{
+    border-color:#AB1241;
+}
+
+/* CATEGORY */
+.categories{
+    max-width:1200px;
+    margin:0 auto 22px;
+    padding:0 18px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+}
+
+.category-btn{
+    white-space:nowrap;
+    border:1px solid #5D1024;
+    background:#fff;
+    color:#5D1024;
+    padding:8px 13px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.category-btn.active,
+.category-btn:hover{
+    background:#5D1024;
+    color:#fff;
+}
+
+/* PRODUCTS */
+.products{
+    max-width:1200px;
+    margin:auto;
+    padding:0 18px 40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:16px;
+}
+
+.product{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+    display:flex;
+    flex-direction:column;
+}
+
+.product-img{
+    width:100%;
+    height:180px;
+    object-fit:contain;
+    background:#fff;
+    padding:10px;
+}
+
+.product-info{
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.product h3{
+    color:#222;
+    font-size:15px;
+    line-height:1.35;
+    margin-bottom:6px;
+}
+
+.description{
+    color:#666;
+    font-size:12px;
+    line-height:1.45;
+    margin-bottom:9px;
+}
+
+.price{
+    color:#5D1024;
+    font-weight:bold;
+    font-size:17px;
+    margin-top:auto;
+    margin-bottom:10px;
+}
+
+.no-price{
+    color:#AB1241;
+    font-size:13px;
+}
+
+.add-btn{
+    width:100%;
+    border:none;
+    background:#5D1024;
+    color:#fff;
+    padding:10px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.add-btn:hover{
+    background:#AB1241;
+}
+
+/* QUANTITY */
+.quantity-box{
+    display:none;
+    align-items:center;
+    justify-content:space-between;
+    border:1px solid #5D1024;
+    border-radius:7px;
+    overflow:hidden;
+}
+
+.quantity-box button{
+    width:36px;
+    height:35px;
+    border:none;
+    background:#5D1024;
+    color:#fff;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.quantity-box span{
+    font-weight:bold;
+    color:#5D1024;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:2000;
+    padding:15px;
+    overflow-y:auto;
+}
+
+.modal-content{
+    max-width:550px;
+    margin:30px auto;
+    background:#fff;
+    border-radius:14px;
+    padding:20px;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.modal-header h2{
+    color:#5D1024;
+    font-size:21px;
+}
+
+.close{
+    border:none;
+    background:none;
+    font-size:28px;
+    cursor:pointer;
+    color:#555;
+}
+
+.order-items{
+    max-height:300px;
+    overflow-y:auto;
+    margin-bottom:15px;
+}
+
+.order-item{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:11px 0;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+.order-item-name{
+    flex:1;
+}
+
+.remove-item{
+    border:none;
+    background:#f8e8ed;
+    color:#5D1024;
+    border-radius:5px;
+    padding:5px 8px;
+    cursor:pointer;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+    color:#5D1024;
+    font-size:17px;
+    padding:12px 0;
+}
+
+.input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    margin-bottom:10px;
+    outline:none;
+}
+
+.input:focus{
+    border-color:#AB1241;
+}
+
+.whatsapp-btn{
+    width:100%;
+    border:none;
+    background:#25D366;
+    color:#fff;
+    padding:13px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:25px 5px;
+    font-size:14px;
+}
+
+/* FOOTER */
+footer{
+    background:#190A0D;
+    color:#fff;
+    text-align:center;
+    padding:25px 15px;
+    font-size:13px;
+}
+
+footer h3{
+    margin-bottom:8px;
+}
+
+footer p{
+    color:#ddd;
+    margin:4px 0;
+}
+
+@media(max-width:600px){
+    .header-inner{
+        padding:12px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .order-btn{
+        padding:9px 11px;
+        font-size:12px;
+    }
+
+    .hero{
+        margin:12px;
+        padding:22px 14px;
+    }
+
+    .hero h1{
+        font-size:23px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+        padding:0 10px 30px;
+    }
+
+    .product-img{
+        height:150px;
+    }
+
+    .product-info{
+        padding:9px;
+    }
+
+    .product h3{
+        font-size:13px;
+    }
+
+    .description{
+        font-size:11px;
+    }
+
+    .price{
+        font-size:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            Aditi Beauty & Cosmetic Hub
+            <span>Beauty • Cosmetic • Tailoring Center</span>
+        </div>
+
+        <button class="order-btn" onclick="openOrder()">
+            Order List (<span id="orderCount">0</span>)
+        </button>
+
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Aditi Beauty & Cosmetic Hub</h1>
+    <p>Beauty • Cosmetic • Tailoring Center</p>
+
+    <div class="delivery">
+        Free Home Delivery within 0.5 KM on purchase above ₹50
+    </div>
+</section>
+
+<div class="search-area">
+    <input
+        type="text"
+        id="search"
+        class="search"
+        placeholder="Search product..."
+        oninput="showProducts()"
+    >
+</div>
+
+<div class="categories">
+    <button class="category-btn active" onclick="setCategory('all',this)">All</button>
+    <button class="category-btn" onclick="setCategory('facewash',this)">Face Wash</button>
+    <button class="category-btn" onclick="setCategory('cream',this)">Cream</button>
+    <button class="category-btn" onclick="setCategory('hair',this)">Hair</button>
+    <button class="category-btn" onclick="setCategory('perfume',this)">Perfume</button>
+    <button class="category-btn" onclick="setCategory('baby',this)">Baby</button>
+    <button class="category-btn" onclick="setCategory('moisturizer',this)">Moisturizer</button>
+    <button class="category-btn" onclick="setCategory('powder',this)">Powder</button>
+</div>
+
+<div id="products" class="products"></div>
+
+
+<!-- ORDER MODAL -->
+<div id="orderModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Order List</h2>
+
+            <button class="close" onclick="closeOrder()">
+                ×
+            </button>
+        </div>
+
+        <div id="orderItems" class="order-items"></div>
+
+        <div class="total">
+            <span>Total</span>
+            <span id="totalPrice">₹0</span>
+        </div>
+
+        <input
+            id="customerName"
+            class="input"
+            type="text"
+            placeholder="Your Name"
+        >
+
+        <input
+            id="customerMobile"
+            class="input"
+            type="tel"
+            placeholder="Mobile Number (Optional)"
+        >
+
+        <input
+            id="customerNote"
+            class="input"
+            type="text"
+            placeholder="Any note (Optional)"
+        >
+
+        <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">
+            WhatsApp पर Order भेजें
+        </button>
+
+    </div>
+</div>
+
+
+<footer>
+
+    <h3>Aditi Beauty & Cosmetic Hub</h3>
+
+    <p>Beauty • Cosmetic • Tailoring Center</p>
+
+    <p>Proprietor: किशन कुशवाहा</p>
+
+    <p>WhatsApp: 9129033788</p>
+
+    <p style="margin-top:12px;">
+        Store Pickup • Pay at Shop
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   PRODUCTS DATABASE
+========================= */
+
+const products = [
+
+{
+id:1,
+name:"Glow & Lovely Bright Glow Face Wash",
+price:97,
+category:"facewash",
+image:"images/glow-lovely-bright-glow-face-wash.jpg",
+description:"Daily cleansing face wash that helps remove dirt and impurities for a fresh-looking face."
+},
+
+{
+id:2,
+name:"Dabur Amla Hair Oil",
+price:null,
+category:"hair",
+image:"images/dabur-amla-hair-oil.jpg",
+description:"Amla-based hair oil designed to nourish the scalp and help hair look stronger and healthier."
+},
+
+{
+id:3,
+name:"Little Angel Pampers 1 Piece 7kg",
+price:10,
+category:"baby",
+image:"images/little-angel-pampers.jpg",
+description:"Single-piece baby diaper option suitable for babies around the 7 kg weight range."
+},
+
+{
+id:4,
+name:"Navratan Powder 18g",
+price:10,
+category:"powder",
+image:"images/navratan-powder-18g.jpg",
+description:"Cooling body powder with a refreshing fragrance, suitable for everyday use."
+},
+
+{
+id:5,
+name:"Clean & Clear Foaming Face Wash 20ml",
+price:null,
+category:"facewash",
+image:"images/clean-clear-20ml.jpg",
+description:"Foaming cleanser that helps remove excess oil and daily dirt, especially useful for oily skin."
+},
+
+{
+id:6,
+name:"Clean & Clear Foaming Face Wash 50ml",
+price:null,
+category:"facewash",
+image:"images/clean-clear-50ml.jpg",
+description:"Foaming face wash that cleanses oil and impurities for a clean, fresh feeling."
+},
+
+{
+id:7,
+name:"Joy Skin Fruits Moisturizer 15ml",
+price:10,
+category:"moisturizer",
+image:"images/joy-skin-fruits-15ml.jpg",
+description:"Moisturizing cream with fruit extracts and nourishing oils for soft, moisturised-looking skin."
+},
+
+{
+id:8,
+name:"Himalaya Neem Face Wash 15ml",
+price:20,
+category:"facewash",
+image:"images/himalaya-neem-face-wash-15ml.jpg",
+description:"Soap-free neem face wash that cleanses impurities and is suitable for pimple-prone skin."
+},
+
+{
+id:9,
+name:"Garnier Serum Face Wash 50g",
+price:109,
+category:"facewash",
+image:"images/garnier-serum-face-wash-50g.jpg",
+description:"Face wash with vitamin C and lemon that cleanses impurities and leaves skin feeling fresh."
+},
+
+{
+id:10,
+name:"Glow & Lovely Face Wash 50g",
+price:97,
+category:"facewash",
+image:"images/glow-lovely-face-wash-50g.jpg",
+description:"Everyday face wash that helps cleanse dirt and impurities for a fresh-looking face."
+},
+
+{
+id:11,
+name:"Glow & Lovely Cream 50g",
+price:139,
+category:"cream",
+image:"images/glow-lovely-cream-50g.jpg",
+description:"Daily-use face cream designed to moisturise skin and give it a brighter-looking appearance."
+},
+
+{
+id:12,
+name:"Glow & Lovely Cream 25g",
+price:72,
+category:"cream",
+image:"images/glow-lovely-cream-25g.jpg",
+description:"Compact daily-use cream for moisturising and maintaining a fresh-looking complexion."
+},
+
+{
+id:13,
+name:"Denver Perfume 150ml / 96g",
+price:250,
+category:"perfume",
+image:"images/denver-perfume-150ml.jpg",
+description:"Fragrance spray with a fresh masculine scent, suitable for everyday use and outings."
+},
+
+{
+id:14,
+name:"Denver Perfume 32g",
+price:90,
+category:"perfume",
+image:"images/denver-perfume-32g-1.jpg",
+description:"Compact Denver fragrance option for everyday freshness and easy carrying."
+},
+
+{
+id:15,
+name:"Denver Perfume 32g",
+price:90,
+category:"perfume",
+image:"images/denver-perfume-32g-2.jpg",
+description:"Compact fragrance option with a fresh masculine scent for daily use."
+},
+
+{
+id:16,
+name:"Vicco Turmeric Skin Cream 15g",
+price:78,
+category:"cream",
+image:"images/vicco-turmeric-15g.jpg",
+description:"Turmeric-based skincare cream with sandalwood oil for everyday skin care."
+},
+
+{
+id:17,
+name:"Vicco Turmeric Skin Cream 30g",
+price:150,
+category:"cream",
+image:"images/vicco-turmeric-30g.jpg",
+description:"Turmeric and sandalwood oil based cream for everyday skincare and moisturising."
+},
+
+{
+id:18,
+name:"POND'S Bright Beauty 35g",
+price:199,
+category:"cream",
+image:"images/ponds-bright-beauty-35g.jpg",
+description:"Brightening moisturising cream from the POND'S Bright Beauty range for daily skincare."
+},
+
+{
+id:19,
+name:"POND'S Bright Beauty 15g",
+price:69,
+category:"cream",
+image:"images/ponds-bright-beauty-15g.jpg",
+description:"Small everyday skincare pack from the POND'S Bright Beauty range."
+}
+
+];
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let selectedCategory = "all";
+
+let cart = {};
+
+
+/* =========================
+   SHOW PRODUCTS
+========================= */
+
+function showProducts(){
+
+    const container = document.getElementById("products");
+
+    const searchText =
+        document.getElementById("search").value
+        .toLowerCase()
+        .trim();
+
+    container.innerHTML = "";
+
+    const filtered = products.filter(product => {
+
+        const categoryMatch =
+            selectedCategory === "all" ||
+            product.category === selectedCategory;
+
+        const searchMatch =
+            product.name.toLowerCase().includes(searchText);
+
+        return categoryMatch && searchMatch;
+
+    });
+
+
+    if(filtered.length === 0){
+
+        container.innerHTML =
+        `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#777;">
+            Product नहीं मिला
+        </div>`;
+
+        return;
+    }
+
+
+    filtered.forEach(product => {
+
+        const quantity =
+            cart[product.id] ? cart[product.id] : 0;
+
+        const card = document.createElement("div");
+
+        card.className = "product";
+
+        card.innerHTML = `
+
+            <img
+                class="product-img"
+                src="${product.image}"
+                alt="${product.name}"
+                onerror="this.src='https://via.placeholder.com/300x300?text=Image+Not+Found'"
+            >
+
+            <div class="product-info">
+
+                <h3>${product.name}</h3>
+
+                <div class="description">
+                    ${product.description}
+                </div>
+
+                <div class="price">
+
+                    ${
+                        product.price !== null
+                        ? "₹" + product.price
+                        : '<span class="no-price">Price not added</span>'
+                    }
+
+                </div>
+
+                <button
+                    class="add-btn"
+                    id="add-${product.id}"
+                    onclick="addProduct(${product.id})"
+                    style="${quantity > 0 ? 'display:none;' : ''}"
+                >
+                    + Order में जोड़ें
+                </button>
+
+                <div
+                    class="quantity-box"
+                    id="qty-${product.id}"
+                    style="${quantity > 0 ? 'display:flex;' : ''}"
+                >
+
+                    <button onclick="changeQuantity(${product.id},-1)">
+                        −
+                    </button>
+
+                    <span id="quantity-${product.id}">
+                        ${quantity}
+                    </span>
+
+                    <button onclick="changeQuantity(${product.id},1)">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+function setCategory(category,button){
+
+    selectedCategory = category;
+
+    document
+    .querySelectorAll(".category-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    showProducts();
+
+}
+
+
+/* =========================
+   ADD PRODUCT
+========================= */
+
+function addProduct(id){
+
+    if(!cart[id]){
+        cart[id] = 1;
+    }
+
+    updateOrderCount();
+
+    showProducts();
+
+}
+
+
+/* =========================
+   CHANGE QUANTITY
+========================= */
+
+function changeQuantity(id,change){
+
+    if(!cart[id]){
+        cart[id] = 0;
+    }
+
+    cart[id] += change;
+
+    if(cart[id] <= 0){
+        delete cart[id];
+    }
+
+    updateOrderCount();
+
+    showProducts();
+
+}
+
+
+/* =========================
+   ORDER COUNT
+========================= */
+
+function updateOrderCount(){
+
+    let count = 0;
+
+    Object.values(cart).forEach(qty => {
+        count += qty;
+    });
+
+    document.getElementById("orderCount").innerText = count;
+
+}
+
+
+/* =========================
+   OPEN ORDER
+========================= */
+
+function openOrder(){
+
+    renderOrder();
+
+    document.getElementById("orderModal").style.display = "block";
+
+}
+
+
+/* =========================
+   CLOSE ORDER
+========================= */
+
+function closeOrder(){
+
+    document.getElementById("orderModal").style.display = "none";
+
+}
+
+
+/* =========================
+   RENDER ORDER
+========================= */
+
+function renderOrder(){
+
+    const container =
+        document.getElementById("orderItems");
+
+    container.innerHTML = "";
+
+    let total = 0;
+
+    const ids = Object.keys(cart);
+
+
+    if(ids.length === 0){
+
+        container.innerHTML =
+        `<div class="empty">
+            आपकी Order List खाली है।<br>
+            पहले कोई product add करें।
+        </div>`;
+
+        document.getElementById("totalPrice").innerText = "₹0";
+
+        return;
+    }
+
+
+    ids.forEach(id => {
+
+        const product =
+            products.find(p => p.id == id);
+
+        const qty = cart[id];
+
+
+        const item =
+        document.createElement("div");
+
+        item.className = "order-item";
+
+
+        let itemTotal = 0;
+
+        if(product.price !== null){
+
+            itemTotal =
+                product.price * qty;
+
+            total += itemTotal;
+
+        }
+
+
+        item.innerHTML = `
+
+            <div class="order-item-name">
+
+                <strong>
+                    ${product.name}
+                </strong>
+
+                <br>
+
+                Qty: ${qty}
+
+                <br>
+
+                ${
+                    product.price !== null
+                    ? "₹" + itemTotal
+                    : "Price confirm"
+                }
+
+            </div>
+
+            <button
+                class="remove-item"
+                onclick="removeFromOrder(${product.id})"
+            >
+                Remove
+            </button>
+
+        `;
+
+        container.appendChild(item);
+
+    });
+
+
+    document.getElementById("totalPrice").innerText =
+        "₹" + total;
+
+}
+
+
+/* =========================
+   REMOVE
+========================= */
+
+function removeFromOrder(id){
+
+    delete cart[id];
+
+    updateOrderCount();
+
+    showProducts();
+
+    renderOrder();
+
+}
+
+
+/* =========================
+   WHATSAPP ORDER
+========================= */
+
+function sendWhatsAppOrder(){
+
+    const ids = Object.keys(cart);
+
+
+    if(ids.length === 0){
+
+        alert("पहले Order List में product जोड़ें।");
+
+        return;
+    }
+
+
+    const name =
+        document.getElementById("customerName").value.trim();
+
+    const mobile =
+        document.getElementById("customerMobile").value.trim();
+
+    const note =
+        document.getElementById("customerNote").value.trim();
+
+
+    if(!name){
+
+        alert("कृपया अपना नाम डालें।");
+
+        return;
+    }
+
+
+    let message =
+        "🛍️ *STORE PICKUP ORDER*\n\n";
+
+
+    message +=
+        "Customer Name: " + name + "\n";
+
+
+    if(mobile){
+
+        message +=
+            "Mobile: " + mobile + "\n";
+
+    }
+
+
+    message += "\n*Products:*\n";
+
+
+    let total = 0;
+
+
+    ids.forEach(id => {
+
+        const product =
+            products.find(p => p.id == id);
+
+        const qty = cart[id];
+
+
+        message +=
+            "• " +
+            product.name +
+            " × " +
+            qty;
+
+
+        if(product.price !== null){
+
+            const itemTotal =
+                product.price * qty;
+
+            total += itemTotal;
+
+            message +=
+                " = ₹" + itemTotal;
+
+        }else{
+
+            message +=
+                " = Price confirm";
+
+        }
+
+
+        message += "\n";
+
+    });
+
+
+    message +=
+        "\n*Estimated Total: ₹" +
+        total +
+        "*\n";
+
+
+    if(note){
+
+        message +=
+            "\nNote: " +
+            note +
+            "\n";
+
+    }
+
+
+    message +=
+        "\n📍 *Store Pickup Order*";
+
+    message +=
+        "\nमैं दुकान पर आकर payment करूँगा और सामान ले जाऊँगा।";
+
+    message +=
+        "\n\nOnline payment नहीं किया गया है.";
+
+
+    const whatsappNumber =
+        "919129033788";
+
+
+    const url =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(url,"_blank");
+
+}
+
+
+/* =========================
+   MODAL OUTSIDE CLICK
+========================= */
+
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("orderModal");
+
+    if(event.target === modal){
+
+        closeOrder();
+
+    }
+
+};
+
+
+/* =========================
+   START
+========================= */
+
+showProducts();
+
+</script>
+
+</body>
+</html>
